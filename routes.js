@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router()
 const db = require('./db');
+const ValidatorMiddleware = require('./middlewares/validatorMiddleware');
+const validatorMiddleware = require('./middlewares/validatorMiddleware');
 
 
 //Endpoint de criacao de aula(create)
@@ -62,7 +64,7 @@ router.delete('/aulas/:id', (req, res) =>{
     });
 });
 //-----------------------------------ALUNOS---------------------------------
-router.post('/alunos', (req, res) =>{
+router.post('/alunos', validatorMiddleware.validateInput, (req, res) =>{
     const {nome, idade} = req.body;
 
     const query = `INSERT INTO alunos(nome, idade) VALUES('${nome}',${idade})`;
