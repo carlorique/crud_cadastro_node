@@ -1,0 +1,3 @@
+login, aluno, autenticao token JWT
+speak - teste
+componetizacao - propriedades pre definidas(reutilizacao de codigo)
